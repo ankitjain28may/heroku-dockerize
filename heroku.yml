@@ -1,0 +1,13 @@
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: PSQL
+    - plan: heroku-redis
+      as: REDIS
+  config:
+    APP_NAME: heroku-dockerize
+build:
+  docker:
+    web: Dockerfile
+run:
+  web: node index.js
