@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => res.send('Hello World!'))
-app.get('/commit', (req, res) => res.sendFile('./commit.txt'))
+app.get('/commit', (req, res) => res.sendFile('./commit.txt', { root: __dirname }))
 app.get('/dummy/:id', (req, res) => {
   client.get(req.params.id, (err, reply) => {
     if (err) {

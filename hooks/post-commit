@@ -2,3 +2,6 @@
 
 # Post Commit
 git rev-parse HEAD > ./commit.txt
+
+git add ./commit.txt
+git commit --amend -C HEAD --no-verify
