@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
+// Routes
 app.get('/', (req, res) => res.send('Hello World!'))
 app.get('/commit', (req, res) => res.sendFile('./commit.txt', { root: __dirname }))
 app.get('/dummy/:id', (req, res) => {
