@@ -1,0 +1,21 @@
+language: node_js
+services:
+- docker
+node_js:
+- 10
+- 12
+before_install:
+- npm install -g npm
+script:
+- npm install
+- npm run pretest
+- docker build -t heroku-dockerize:travis .
+- docker images
+deploy:
+  provider: heroku
+  api_key:
+    secure: OZHWwOiPURG9irAKEVqp48mwJTYWbEV7y54+Npt+Wcjtbh3H3hgQUtuHLbj5WCaeI5uFnzUGGtXDJB8fvj6k8EVJEY3jD8JYvdHeje6MUyKsLpWxPqMU5GejnJMKfe7qE7eqRatQWSTA7VRf7SUa5kUPLVcBVuLi6TSHMQITvqhlNDyvju9l6iYeQpzhHvazq63k13MnkzIpV6FAr/6i3dMYLfM1aqHb0DXG+FVVPF9KYl9X43ZzvnVjyUl3uFnHmCnuiZWhu8QnQxAeBL+C09wvNrGaPp9MN7Q+uTNtucb/TmGkp6Lrxa8D6xQM7C5ZhW9rzUvbwCceNsiCQMsPbyl2wSZWV9o1X/HfwEOvr4sg3NYPlsdtpgydniqgosPMP+cs/bBmEBl+xAk1aGOw09QzNhNl0Eug0N8a2JGbrbne4Pklo8xLn83+qSaRqo3VQwU0LeC1Z13ikXxlXnxw4aVZx109r6u/sSpBWk+nO+euK5TpSyOccXrQKY1BkB1ro58xxaQBjzb3+0W5Y4i7KJY7KWeDqVFKQW9ehpkZ00DIyZ8vT52hVVlGJzzxllzLpzd1TxuyS7KrjdmMRiT2JW4PUyqmt2eIAE0nf6bXvFrgQfdNVPOpMWN0RVfFozt5L7Ed/j4H+tKRcfF0IM3yMFMXZM2uNvn3Kzg0DgnEjhQ=
+  app: heroku-dockerize
+  on:
+    repo: ankitjain28may/heroku-dockerize
+  skip_cleanup: true

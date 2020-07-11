@@ -9,6 +9,6 @@ RUN npm install && npm update
 
 COPY . .
 
-EXPOSE $PORT
+EXPOSE 3000
 
 CMD ["node",  "index.js"]
