@@ -1,5 +1,6 @@
 FROM node:14-alpine
 
+RUN apk add --no-cache --update curl bash
 WORKDIR /app
 
 ARG PORT=3000
