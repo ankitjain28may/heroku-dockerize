@@ -1,14 +1,20 @@
-FROM node:latest
+FROM node:14-alpine
 
 WORKDIR /app
 
-COPY package* ./
+ARG PORT=3000
+ENV PORT=$PORT
 
+COPY package* ./
 # Install the npm packages
 RUN npm install && npm update
 
 COPY . .
 
-EXPOSE 3000
+# Run the image as a non-root user
+RUN adduser -D myuser
+USER myuser
 
-CMD ["node",  "index.js"]
+EXPOSE $PORT
+
+CMD ["npm", "run", "start"]
