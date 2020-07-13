@@ -13,7 +13,7 @@ jobs:
       - run: 
           name: Running npm test
           command: |
-            docker run --name edis -d -p 6379:6379 redis
+            docker run --name redis --network=host -d -p 6379:6379 redis
             docker ps
             npm run test
       - run:
