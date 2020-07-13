@@ -8,12 +8,15 @@ jobs:
     steps:
       - checkout
       - node/install-packages
-      - run: 
-          name: Running npm pretest
-          command: |
-            npm run pretest
       - setup_remote_docker:
           version: 18.06.0-ce
+      - run:
+          name: Setting Redis service
+          command: docker run --name edis -d -p 6379:6379 redis
+      - run: 
+          name: Running npm test
+          command: |
+            npm run test
       - run:
           name: Build Docker image
           command: |

@@ -50,4 +50,18 @@ app.post('/dummy/:id', (req, res) => {
   })
 })
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+app.delete('/dummy/:id', (req, res) => {
+  client.del(req.params.id, (err, reply) => {
+    if (err) {
+      return res.send(err)
+    }
+    if (reply === 1) {
+      return res.send('Deleted Successfully!')
+    } else {
+      return res.send('Cannot delete')
+    }
+  })
+})
+
+var server = app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+module.exports = server
