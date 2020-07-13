@@ -10,12 +10,11 @@ jobs:
       - node/install-packages
       - setup_remote_docker:
           version: 18.06.0-ce
-      - run:
-          name: Setting Redis service
-          command: docker run --name edis -d -p 6379:6379 redis
       - run: 
           name: Running npm test
           command: |
+            docker run --name edis -d -p 6379:6379 redis
+            docker ps
             npm run test
       - run:
           name: Build Docker image
