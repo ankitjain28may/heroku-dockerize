@@ -4,7 +4,6 @@ const redis = require('redis')
 const path = require('path')
 const app = express()
 
-const port = process.env.PORT || 3000
 const redisUrl = process.env.REDIS_URL || 'redis://localhost:6379'
 const client = redis.createClient(redisUrl)
 
@@ -50,4 +49,17 @@ app.post('/dummy/:id', (req, res) => {
   })
 })
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+app.delete('/dummy/:id', (req, res) => {
+  client.del(req.params.id, (err, reply) => {
+    if (err) {
+      return res.send(err)
+    }
+    if (reply === 1) {
+      return res.send('Deleted Successfully!')
+    } else {
+      return res.send('Cannot delete')
+    }
+  })
+})
+
+module.exports = app

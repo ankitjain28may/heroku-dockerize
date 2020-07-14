@@ -9,9 +9,13 @@ jobs:
       - checkout
       - node/install-packages
       - run: 
-          name: Running npm pretest
+          name: Running npm test
           command: |
-            npm run pretest
+            npm run test
+      - run:
+          name: Codecov coverage
+          command: |
+            npm run coverage
       - setup_remote_docker:
           version: 18.06.0-ce
       - run:

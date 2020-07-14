@@ -5,8 +5,12 @@ networks:
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      args:
+        - NODE_ENV=production
     container_name: heroku-dockerize-web
+    
     networks:
       - internal
     ports:
