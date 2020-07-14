@@ -1,5 +1,9 @@
 const request = require('supertest')
 const app = require('../index')
+jest.mock('redis', () => {
+  const redis = require('redis-mock')
+  return redis
+})
 
 describe('Endpoints', () => {
   it('Making get request /', async () => {

@@ -8,27 +8,17 @@ jobs:
     steps:
       - checkout
       - node/install-packages
+      - run: 
+          name: Running npm test
+          command: |
+            npm run test
       - setup_remote_docker:
           version: 18.06.0-ce
-      - run: 
-          name: Running npm pretest
-          command: |
-            npm run pretest
       - run:
           name: Build Docker image
           command: |
             docker build -t heroku-dockerize:circleci .
             docker images
-  test:
-    docker:
-      - image: redis
-    steps:
-      - checkout
-      - node/install-packages
-      - run: 
-          name: Running npm test
-          command: |
-            npm run test
   deploy:
     executor: heroku/default
     steps:
@@ -49,7 +39,6 @@ jobs:
 workflows:
   build-test-deploy:
     jobs:
-      - test
       - build-and-test
       - deploy:
           requires:
