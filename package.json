@@ -2,10 +2,10 @@
   "name": "heroku-docker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "jest --coverage --forceExit",
-    "start": "node index.js",
+    "test": "jest --coverage",
+    "start": "node server.js",
     "pretest": "eslint --ignore-path .gitignore ."
   },
   "keywords": [],

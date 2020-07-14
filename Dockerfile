@@ -3,6 +3,7 @@ FROM node:14-alpine
 RUN apk add --no-cache --update curl bash
 WORKDIR /app
 
+ARG NODE_ENV=development
 ARG PORT=3000
 ENV PORT=$PORT
 
