@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --coverage",
     "start": "node server.js",
-    "pretest": "eslint --ignore-path .gitignore ."
+    "pretest": "eslint --ignore-path .gitignore .",
+    "coverage": "codecov"
   },
   "keywords": [],
   "author": "Ankit Jain <ankitjain28may77@gmail.com>",
@@ -16,6 +17,7 @@
     "redis": "^3.0.2"
   },
   "devDependencies": {
+    "codecov": "^3.7.0",
     "eslint": "^7.4.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
@@ -30,6 +32,8 @@
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
-    ]
+    ],
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
