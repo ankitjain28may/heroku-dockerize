@@ -8,7 +8,8 @@ before_install:
 - git rev-parse HEAD > ./commit.txt
 script:
 - npm install
-- npm run pretest
+- npm run test
+- npm run coverage
 - docker build -t heroku-dockerize:travis .
 - docker images
 deploy:
