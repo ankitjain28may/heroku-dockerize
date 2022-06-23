@@ -17,7 +17,7 @@
     "redis": "^3.0.2"
   },
   "devDependencies": {
-    "codecov": "^3.7.0",
+    "codecov": "^3.8.3",
     "eslint": "^7.4.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
